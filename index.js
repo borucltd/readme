@@ -1,4 +1,5 @@
 // external modules
+const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 const badges = require('./utils/badges');
 
@@ -22,13 +23,25 @@ const questions_github = [
     'Additional website:',
 ];
 
+function readme(){
+
+    this.title = title;
+    this.description = description;
+    this.toc = toc;
+    this.installation = installation;
+    this.usage = usage;
+    this.license = license;
+    this.contributing = contributing;
+    this.tests = tests;
+
+};
 
 function writeToFile(fileName, data) {
-}
+};
 
 function init() {
 
-}
+};
 
 init();
 
