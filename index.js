@@ -1,11 +1,27 @@
+// external modules
 const generateMarkdown = require('./utils/generateMarkdown');
 const badges = require('./utils/badges');
 
-
-
-const questions = [
-
+// variables
+const questions_readme = [
+    'What is your project title',
+    'Provide some description',
+    'Add table of contents (yes/no)',
+    'Installation',
+    'Usage',
+    'Credits',
+    'License',
+    'Badges',
+    'Contributing',
+    'Tests',
 ];
+
+const questions_github = [
+    'GitHub username:',
+    'GitHub repository:',
+    'Additional website:',
+];
+
 
 function writeToFile(fileName, data) {
 }
