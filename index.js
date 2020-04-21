@@ -1,28 +1,16 @@
+'use strict';
+
 // external modules
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown');
+//   pre-defined questions
+const questions = require('./utils/questions');
+//   manages shields badges
 const badges = require('./utils/badges');
+//   used to create MARKDOWN object
+const generateMarkdown = require('./utils/generateMarkdown');
 
-// variables
-const questions_readme = [
-    'What is your project title',
-    'Provide some description',
-    'Add table of contents (yes/no)',
-    'Installation',
-    'Usage',
-    'Credits',
-    'License',
-    'Badges',
-    'Contributing',
-    'Tests',
-];
 
-const questions_github = [
-    'GitHub username:',
-    'GitHub repository:',
-    'Additional website:',
-];
-
+// constructors
 function readme(){
 
     this.title = title;
@@ -36,6 +24,17 @@ function readme(){
 
 };
 
+// functions
+function collectAnswers(){
+   
+
+    inquirer.prompt(questions.questions).then(answers => {
+        console.log(JSON.stringify(answers, null, '  '));
+      });
+
+
+}
+
 function writeToFile(fileName, data) {
 };
 
@@ -43,9 +42,8 @@ function init() {
 
 };
 
+
+
+// main part of the application
 init();
-
-
-let mariusz = new badges("dsad","flat","boruc","readme","lnxsa");
-
-console.log(mariusz.shields[2]);
+collectAnswers();
