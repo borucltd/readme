@@ -1,10 +1,12 @@
 // Module which manages questions which have to be 
 // answered in order to generate README
+
 const questions = [
     {
-        type: 'input',
+        type: 'editor',
         name: 'user',
-        message: "What's your GitHub user name?: "
+        message: "What's your GitHub user name?: ",
+        
     },
     {
         type: 'input',
@@ -42,14 +44,16 @@ const questions = [
         message: "Provide credits: "
     },
     {
-        type: 'input',
+        type: 'checkbox',
         name: 'license',
-        message: "Select license type: "
+        message: "Select license type: ",
+        choices: ['Apache', 'MIT']
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'shields',
-        message: "Select shields badges: "
+        message: "Select shields badges: ",
+        choices: ['Number of pull requests', 'Size of repository', 'External website']
     },
     {
         type: 'input',

@@ -27,9 +27,11 @@ function readme(){
 // functions
 function collectAnswers(){
    
-
+    // use modules inquirer and questions
     inquirer.prompt(questions.questions).then(answers => {
-        console.log(JSON.stringify(answers, null, '  '));
+
+        console.log(answers.title);
+        //console.log(JSON.stringify(answers, null, '  '));
       });
 
 
