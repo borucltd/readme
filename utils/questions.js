@@ -10,13 +10,13 @@ const questions = [
         type: 'input',
         name: 'user',
         message: "What's your GitHub user?: ",
-        validate: (user) => {
+        validate: (userInput) => {
 
             // validate input is not empty
-            if (user.match(/[a-z]/gi)) {
+            if (userInput.match(/[a-z]/gi)) {
                 
                 // when input is not empty lets make API call to GitHub
-                let pass = axios.get("https://api.github.com/users/" + user)
+                let pass = axios.get("https://api.github.com/users/" + userInput)
                 .then(response => {
                     if (response.data.login) {
                         // returns true so we can move on to the next question
@@ -26,7 +26,7 @@ const questions = [
                 .catch(error => {
                     // returns non-true so we will stay on the current question 
                     // until user provides valid data
-                    return `"ERROR: There is no ${user} on GitHub!"`;
+                    return `"ERROR: There is no ${userInput} on GitHub!"`;
                 });
 
             return pass;
@@ -34,25 +34,49 @@ const questions = [
             // returns non-true so we will stay on the current question 
             // until user provides valid data
             return "ERROR: GitHub user must not be empty!";   
-        }
-
-      
-
+        }     
     },
     {
         type: 'input',
         name: 'repository',
-        message: "What's your GitHub repository?: "
+        message: "What's your GitHub repository?: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: GitHub repository must not be empty!";            
+        }   
     },
     {
         type: 'input',
         name: 'website',
-        message: "What's your external website?: "
+        message: "What's your external website?[DNS only]: ",
+        validate: (userInput) => {
+
+            // validate if this is valid URL (here I used https://www.regextester.com/93652)
+            if (userInput.match(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i)) { 
+                return true;
+            } 
+        
+            return "ERROR: this is not valid DNS name!";            
+        } 
     },
     {
         type: 'input',
         name: 'title',
-        message: "What's your project's title?: "
+        message: "What's your project's title?: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project title must not be empty!";            
+        }   
     },
     {
         type: 'input',
