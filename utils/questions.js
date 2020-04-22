@@ -1,12 +1,43 @@
-// Module which manages questions which have to be 
+// Module name: questions.js
+// It manages questions which have to be 
 // answered in order to generate README
+
+// import axios in order to make API calls to github
+const axios = require('axios');
 
 const questions = [
     {
-        type: 'editor',
+        type: 'input',
         name: 'user',
-        message: "What's your GitHub user name?: ",
-        
+        message: "What's your GitHub user?: ",
+        validate: (user) => {
+
+            // validate input is not empty
+            if (user.match(/[a-z]/gi)) {
+                
+                // when input is not empty lets make API call to GitHub
+                let pass = axios.get("https://api.github.com/users/" + user)
+                .then(response => {
+                    if (response.data.login) {
+                        // returns true so we can move on to the next question
+                        return true;
+                    }
+                })
+                .catch(error => {
+                    // returns non-true so we will stay on the current question 
+                    // until user provides valid data
+                    return `"ERROR: There is no ${user} on GitHub!"`;
+                });
+
+            return pass;
+            }
+            // returns non-true so we will stay on the current question 
+            // until user provides valid data
+            return "ERROR: GitHub user must not be empty!";   
+        }
+
+      
+
     },
     {
         type: 'input',
