@@ -127,28 +127,55 @@ const questions = [
         }  
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'installation',
-        message: "Provide installation steps: "
+        message: "Provide installation steps: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project description must not be empty!";            
+        } 
     },
     {
-        type: 'input',
+        type: 'editor',
         name: 'usage',
-        message: "Provide usage instructions: "
+        message: "Provide usage instructions: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project description must not be empty!";            
+        } 
     },
     {
         type: 'input',
         name: 'credits',
-        message: "Provide credits: "
+        message: "Provide credits: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project description must not be empty!";            
+        } 
     },
     {
-        type: 'checkbox',
+        type: 'list',
         name: 'license',
         message: "Select license type: ",
         choices: license
     },
     {
-        type: 'list',
+        type: 'checkbox',
         name: 'shields',
         message: "Select shields badges: ",
         choices: ['Number of pull requests', 'Size of repository', 'External website']
@@ -156,12 +183,30 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: "Who else was contributing?: "
+        message: "Who else was contributing?: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project description must not be empty!";            
+        } 
     },
     {
         type: 'input',
         name: 'tests',
-        message: "What tests did you make?: "
+        message: "What tests did you make?: ",
+        validate: (userInput) => {
+
+            // validate input is not empty
+            if (userInput.match(/[a-z]/gi)) { 
+                return true;
+            } 
+        
+            return "ERROR: Project description must not be empty!";            
+        } 
     },
 ];
 
