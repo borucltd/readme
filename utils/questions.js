@@ -181,6 +181,12 @@ const questions = [
         choices: ['Number of pull requests', 'Size of repository', 'External website']
     },
     {
+        type: 'list',
+        name: 'shieldsStyle',
+        message: "Select shields style: ",
+        choices: ['plastic', 'flat', 'flat_square', 'for-the-badge', 'social']
+    },
+    {
         type: 'input',
         name: 'contributing',
         message: "Who else was contributing?: ",

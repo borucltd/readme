@@ -10,19 +10,6 @@ const badges = require('./utils/badges');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
-// constructors
-function readme(){
-
-    this.title = title;
-    this.description = description;
-    this.toc = toc;
-    this.installation = installation;
-    this.usage = usage;
-    this.license = license;
-    this.contributing = contributing;
-    this.tests = tests;
-
-};
 
 // functions
 function collectAnswers(){
@@ -30,8 +17,22 @@ function collectAnswers(){
     // use modules inquirer and questions
     inquirer.prompt(questions.questions).then(answers => {
 
-        console.log(answers.title);
+    // shields badges object
+        const repobadges = new badges(answers.shields,answers.shieldsStyle,answers.user,answers.repository,answers.website);
+
+        console.log(answers);
+        console.log(repobadges.style);
         //console.log(JSON.stringify(answers, null, '  '));
+
+        // concatenate two objects into one
+
+        // generate markdown data 
+        // generateMarkdown(data)
+
+        // write to fileName
+        // const fileName
+        // writeToFile
+        
       });
 
 
