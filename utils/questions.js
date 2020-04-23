@@ -41,7 +41,7 @@ const license = ["Academic Free License v3.0",
 
 const questions = [
     {
-        type: 'input',
+    type: 'input',
         name: 'user',
         message: "What's your GitHub user?: ",
         validate: (userInput) => {
@@ -199,7 +199,7 @@ const questions = [
         
             return "ERROR: Project description must not be empty!";            
         } 
-    },
+    },    
     {
         type: 'input',
         name: 'tests',

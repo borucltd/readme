@@ -1,11 +1,40 @@
-function generateMarkdown(data) {
-
+function generateMarkdown(answers, shields) {
   
-  return `
+  // we return template  
+ return `
 
-# ${data.title}
+  # ${answers.title}
+
+  ## Description
+  ${answers.description}
+
+  ## Table of Contents
+
+  ## Installation
+  ${answers.installation}
+
+  ## Usage
+  ${answers.usage}
+
+  ## Credits
+  ${answers.credits}
+
+  ## License
+  ${answers.license}
+
+  ## Badges
+
+  ## Contributing
+  ${answers.license}
+
+  ## Tests
+  ${answers.tests}
 
 `;
 }
 
 module.exports = generateMarkdown;
+
+
+
+

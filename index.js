@@ -18,21 +18,16 @@ function collectAnswers(){
     inquirer.prompt(questions.questions).then(answers => {
 
     // shields badges object
-        const repobadges = new badges(answers.shields,answers.shieldsStyle,answers.user,answers.repository,answers.website);
+    const repobadges = new badges(answers.shields,answers.shieldsStyle,answers.user,answers.repository,answers.website);
 
-        console.log(answers);
-        console.log(repobadges.style);
-        //console.log(JSON.stringify(answers, null, '  '));
+    // generate markdown data 
+     //generateMarkdown(answers, repobadges.shields);
 
-        // concatenate two objects into one
-
-        // generate markdown data 
-        // generateMarkdown(data)
-
+    console.log(generateMarkdown(answers, repobadges.shields));
         // write to fileName
         // const fileName
         // writeToFile
-        
+
       });
 
 
@@ -42,6 +37,8 @@ function writeToFile(fileName, data) {
 };
 
 function init() {
+
+    
 
     
 
