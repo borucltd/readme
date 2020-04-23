@@ -1,7 +1,5 @@
 function generateMarkdown(answers, badges) {
   
-  console.log(badges);
-  console.log(typeof badges);
   // merge all elements, remove all ' at the end
   let finalShields = "";
   

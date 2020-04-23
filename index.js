@@ -9,19 +9,14 @@ const badges = require('./utils/badges');
 //   used to create MARKDOWN object
 const generateMarkdown = require('./utils/generateMarkdown');
 //   moment.js used to generate unique filename
-const moment = require('moment');
-
-
- 
-
-
-//function writeToFile(fileName, data) {
-//};
+const currentTime = require('moment');
+//   fs.js used to save a file
+const fs = require("fs");
 
 
 
 // main 
-const promise_collectAnswers = inquirer.prompt(questions.questions)
+const output = inquirer.prompt(questions.questions)
   .then(answers => {
 
     // create object of badges bases on given answers
@@ -40,12 +35,18 @@ const promise_collectAnswers = inquirer.prompt(questions.questions)
    .then(markDownText => {
 
     // set filename
-    const fileName = 
+    const fileName = "README_" + currentTime().unix();
+
     // save markdown to a file
-    console.log(markDownText);
-    return true;
+    fs.writeFile(fileName, markDownText, (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log("Your readme file is: " + fileName);
+    });
    })
    .catch(error => {
      console.log("ERROR: something went wrong..." + error);
    })
+  
   
