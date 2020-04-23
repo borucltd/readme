@@ -178,7 +178,16 @@ const questions = [
         type: 'checkbox',
         name: 'shields',
         message: "Select shields badges: ",
-        choices: ['Number of pull requests', 'Size of repository', 'External website']
+        choices: ['Number of pull requests', 'Size of repository', 'External website'],
+        validate: (userselection) => {
+
+            // validate input is not empty
+            if (userselection.length !== 0) { 
+                return true;
+            } 
+        
+            return "ERROR: You must select at least one... come on.";            
+        } 
     },
     {
         type: 'list',
