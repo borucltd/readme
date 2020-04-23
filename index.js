@@ -10,45 +10,38 @@ const badges = require('./utils/badges');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 
+ 
 
-// functions
-function collectAnswers(){
-   
-    // use modules inquirer and questions
-    inquirer.prompt(questions.questions).then(answers => {
 
-    // shields badges object
+//function writeToFile(fileName, data) {
+//};
+
+
+
+// main 
+const promise_collectAnswers = inquirer.prompt(questions.questions)
+  .then(answers => {
+
+    // create object of badges bases on given answers
     const repobadges = new badges(answers.shields,answers.shieldsStyle,answers.user,answers.repository,answers.website);
-
-    // generate markdown data 
-     //generateMarkdown(answers, repobadges.shields);
-
-    console.log(generateMarkdown(answers, repobadges.shields));
-        // write to fileName
-        // const fileName
-        // writeToFile
-
-      });
-
-
-}
-
-function writeToFile(fileName, data) {
-};
-
-function init() {
-
     
+    // returns two objects
+    return [answers, repobadges];
 
-    
+   })
+   .then(rawText => {
+   
+    // return mardown
+    return generateMarkdown(rawText[0],rawText[1]);
 
+   })
+   .then(markDownText => {
 
-
-
-};
-
-
-
-// main part of the application
-init();
-collectAnswers();
+    // save markdown to a file
+    console.log(markDownText);
+    return true;
+   })
+   .catch(error => {
+     console.log("ERROR: something went wrong..." + error);
+   })
+  

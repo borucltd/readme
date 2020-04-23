@@ -1,18 +1,20 @@
-function generateMarkdown(answers, shields) {
+function generateMarkdown(answers, badges) {
   
+  console.log(badges);
+  console.log(typeof badges);
   // merge all elements, remove all ' at the end
   let finalShields = "";
   
   answers.shields.forEach(element => {
     switch(element) {
       case 'Number of pull requests':
-        finalShields += shields[0];
+        finalShields += badges.shields[0];
         break;
       case 'Size of repository':
-        finalShields += shields[1];
+        finalShields += badges.shields[1];
         break;
       case 'External website':
-        finalShields += shields[2];
+        finalShields += badges.shields[2];
         break
       default:
         break
