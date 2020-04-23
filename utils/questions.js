@@ -40,7 +40,7 @@ const license = ["Academic Free License v3.0",
 "zLib License"];
 
 const questions = [
-    {
+{
     type: 'input',
         name: 'user',
         message: "What's your GitHub user?: ",

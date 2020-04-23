@@ -1,5 +1,27 @@
 function generateMarkdown(answers, shields) {
   
+  // merge all elements, remove all ' at the end
+  let finalShields = "";
+  console.log(answers.shields);
+  answers.shields.forEach(element => {
+    switch(element) {
+      case 'Number of pull requests':
+        finalShields += shields[0];
+        break;
+      case 'Size of repository':
+        finalShields += shields[1];
+        break;
+      case 'External website':
+        finalShields += shields[2];
+        break
+      default:
+        break
+    }
+  });
+  console.log(typeof finalShields);
+  console.log(finalShields);
+  const shieldsMarkdown = finalShields.replace(/'/gi,' ');
+
   // we return template  
  return `
 
@@ -23,6 +45,7 @@ function generateMarkdown(answers, shields) {
   ${answers.license}
 
   ## Badges
+  ${shieldsMarkdown}
 
   ## Contributing
   ${answers.license}
