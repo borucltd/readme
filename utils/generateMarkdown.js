@@ -2,7 +2,7 @@ function generateMarkdown(answers, shields) {
   
   // merge all elements, remove all ' at the end
   let finalShields = "";
-  console.log(answers.shields);
+  
   answers.shields.forEach(element => {
     switch(element) {
       case 'Number of pull requests':
@@ -18,8 +18,7 @@ function generateMarkdown(answers, shields) {
         break
     }
   });
-  console.log(typeof finalShields);
-  console.log(finalShields);
+  
   const shieldsMarkdown = finalShields.replace(/'/gi,' ');
 
   // we return template  
@@ -27,31 +26,41 @@ function generateMarkdown(answers, shields) {
 
   # ${answers.title}
 
+  ---
+
   ## Description
   ${answers.description}
 
   ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Credits](#credits)
+  * [License](#license)   
+
+  ---
 
   ## Installation
-  ${answers.installation}
+  >${answers.installation}
 
   ## Usage
-  ${answers.usage}
+  >${answers.usage}
 
   ## Credits
-  ${answers.credits}
+  >${answers.credits}
 
   ## License
-  ${answers.license}
+  >${answers.license}
+
+  ---
 
   ## Badges
   ${shieldsMarkdown}
 
   ## Contributing
-  ${answers.license}
+  >${answers.license}
 
   ## Tests
-  ${answers.tests}
+  >${answers.tests}
 
 `;
 }
