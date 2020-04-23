@@ -8,6 +8,8 @@ const questions = require('./utils/questions');
 const badges = require('./utils/badges');
 //   used to create MARKDOWN object
 const generateMarkdown = require('./utils/generateMarkdown');
+//   moment.js used to generate unique filename
+const moment = require('moment');
 
 
  
@@ -31,12 +33,14 @@ const promise_collectAnswers = inquirer.prompt(questions.questions)
    })
    .then(rawText => {
    
-    // return mardown
+    // return mardown and 
     return generateMarkdown(rawText[0],rawText[1]);
 
    })
    .then(markDownText => {
 
+    // set filename
+    const fileName = 
     // save markdown to a file
     console.log(markDownText);
     return true;
