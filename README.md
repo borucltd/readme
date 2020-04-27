@@ -5,7 +5,7 @@
   ---
 
   ## Description
-  It generated README in Markdown format which can then be used as README file for your github.
+  It generates README in Markdown format which can then be used as README file for your github.
 
   ## Table of Contents
   * [Installation](#installation)
